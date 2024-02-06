@@ -34,12 +34,12 @@ public class Cart {
             }
 
 
-            if(goods.getPrice().compareTo(DeliveryChargeProvider.CHEAP_PRICE_CUT) < 0)
+            if((goods.getPrice().subtract(goods.getDiscount())).compareTo(DeliveryChargeProvider.CHEAP_PRICE_CUT) < 0)
             {
                 totalDeliveryCharge = totalDeliveryCharge.add(weightDeliveryCharge);
 
             }
-            else if(goods.getPrice().compareTo(DeliveryChargeProvider.EXPENSIVE_PRICE_CUT) < 0)
+            else if((goods.getPrice().subtract(goods.getDiscount())).compareTo(DeliveryChargeProvider.EXPENSIVE_PRICE_CUT) < 0)
             {
                 totalDeliveryCharge = totalDeliveryCharge.add(weightDeliveryCharge.subtract(DeliveryChargeProvider.PRICE_CHARGE_DISCOUNT));
 
